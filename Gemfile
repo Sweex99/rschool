@@ -12,7 +12,7 @@ group :development do
   gem 'mina'
   gem 'simple_form'
   gem 'dotenv-rails'
-  gem 'slim'
+  gem 'slim-rails'
   gem 'kaminari'
   gem 'pry-byebug'
   gem "letter_opener"
