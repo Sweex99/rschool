@@ -53,6 +53,11 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # Add Yarn node_modules folder to the asset load path.
+  Rails.application.config.assets.paths += [
+    Rails.root.join('vendor', 'assets').to_s
+  ]
+
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 

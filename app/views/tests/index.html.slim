@@ -1,0 +1,182 @@
+.app-content.content
+  .content-overlay
+  .content-wrapper
+    .content-header.row
+      .content-header-left.col-12.mb-2.mt-1
+        .row.breadcrumbs-top
+          .col-12
+            h5.content-header-title.float-left.pr-1.mb-0 Inputs
+            .breadcrumb-wrapper.col-12
+              ol.breadcrumb.p-0.mb-0
+                li.breadcrumb-item
+                  a href="index.html" 
+                    i.bx.bx-home-alt
+                li.breadcrumb-item
+                  a href="#"  Form Elements
+                li.breadcrumb-item.active
+                  | Input
+    .content-body
+      /! Basic Inputs start
+      section#basic-input
+        .row
+          .col-md-12
+            .card
+              .card-header
+                h4.card-title Basic Inputs
+              .card-content
+                .card-body
+                  .row
+                    .col-md-6
+                      fieldset.form-group
+                        label for="basicInput"  Basic Input
+                        input#basicInput.form-control placeholder=("Enter email") type="text" /
+                      fieldset.form-group
+                        label for="helpInputTop"  Input text with help
+                        small.text-muted
+                          | eg.
+                          i someone@example.com
+                        input#helpInputTop.form-control type="text" /
+                      fieldset.form-group
+                        label for="helperText"  With Helper Text
+                        input#helperText.form-control placeholder="Name" type="text" /
+                        p
+                          small.text-muted Find helper text here for given textbox.
+                    .col-md-6
+                      fieldset.form-group
+                        label for="disabledInput"  Disabled Input
+                        input#disabledInput.form-control disabled="disabled" placeholder=("Disabled Text") type="text" /
+                      fieldset.form-group
+                        label for="disabledInput"  Readonly Input
+                        input#readonlyInput.form-control readonly="readonly" type="text" value=("You can't update me :P") /
+                      fieldset.form-group
+                        label for="disabledInput"  Static Text
+                        p#staticInput.form-control-static email@pixinvent.com
+      section#input-validation
+        .row
+          .col-12
+            .card
+              .card-header
+                h4.card-title Input Validation States
+              .card-content
+                .card-body
+                  .row
+                    .col-12
+                      p
+                        | You can indicate invalid and valid form fields with
+                        code .is-invalid
+                        | and
+                        succeed . do
+                          code .is-valid
+                        code .invalid-feedback
+                        | is also supported with these classes.
+                    .col-sm-6
+                      label for="valid-state"  Valid State
+                      input#valid-state.form-control.is-valid placeholder="Valid" required="" type="text" value="Valid" /
+                      .valid-feedback
+                        i.bx.bx-radio-circle
+                        | This is valid state.
+                    .col-sm-6
+                      label for="invalid-state"  Invalid State
+                      input#invalid-state.form-control.is-invalid placeholder="Invalid" required="" type="text" value="Invalid" /
+                      .invalid-feedback
+                        i.bx.bx-radio-circle
+                        | This is invalid state.
+      section#tooltip-validation
+        .row
+          .col-12
+            .card
+              .card-header
+                h4.card-title Input Validation States with Tooltips
+              .card-content
+                .card-body
+                  p
+                    | Use
+                    code .needs-validation
+                    | with
+                    code &lt;form&gt;
+                    | for Input Validation states with tooltip,
+                    code . valid/invalid -feedback
+                    | classes for
+                    code . valid/invalid -tooltip
+                    | classes to display validation feedback in a styled tooltip.
+                  form.needs-validation novalidate="" 
+                    .form-row
+                      .col-md-4.mb-3
+                        label for="validationTooltip01"  First name
+                        input#validationTooltip01.form-control placeholder=("First name") required="" type="text" value="Mark" /
+                        .valid-tooltip
+                          | Looks good!
+                      .col-md-4.mb-3
+                        label for="validationTooltip02"  Last name
+                        input#validationTooltip02.form-control placeholder=("Last name") required="" type="text" value="Otto" /
+                        .valid-tooltip
+                          | Looks good!
+                      .col-md-4.mb-3
+                        label for="validationTooltip03"  City
+                        input#validationTooltip03.form-control placeholder="City" required="" type="text" /
+                        .invalid-tooltip
+                          | Please provide a valid city.
+                    button.btn.btn-primary type="submit"  Submit
+      .col-xl-4.col-md-6.col-sm-12
+        .card.collapse-icon.accordion-icon-rotate
+          .card-header
+            h1.card-title.pl-1 Accordion
+          .card-content
+            .card-body
+              #cardAccordion.accordion data-toggle-hover="true" 
+                .card
+                  #headingOne.card-header.collapsed aria-controls="collapseOne" aria-expanded="false" data-target="#collapseOne" data-toggle="collapse" role="button" 
+                    span.collapsed.collapse-title Accordion Item 1
+                  #collapseOne.pt-1.collapse aria-labelledby="headingOne" data-parent="#cardAccordion" style="" 
+                    .card-body
+                      | Cheesecake muffin cupcake dragée lemon drops tiramisu cake gummies chocolate cake. Marshmallow tart
+                      | croissant. Tart dessert tiramisu marzipan lollipop lemon drops.
+                .card.collapse-header
+                  #headingTwo.card-header.collapsed aria-controls="collapseTwo" aria-expanded="false" data-target="#collapseTwo" data-toggle="collapse" role="button" 
+                    span.collapsed.collapse-title Accordion Item 2
+                  #collapseTwo.pt-1.collapse aria-labelledby="headingTwo" data-parent="#cardAccordion" style="" 
+                    .card-body
+                      | Pastry pudding cookie toffee bonbon jujubes jujubes powder topping. Jelly beans gummi bears sweet
+                      | roll bonbon muffin liquorice. Wafer lollipop sesame snaps.
+                .card
+                  #headingThree.card-header.collapsed aria-controls="collapseThree" aria-expanded="false" data-target="#collapseThree" data-toggle="collapse" role="button" 
+                    span.collapsed.collapse-title Accordion Item 3
+                  #collapseThree.pt-1.collapse aria-labelledby="headingThree" data-parent="#cardAccordion" style="" 
+                    .card-body
+                      | Sweet pie candy jelly. Sesame snaps biscuit sugar plum. Sweet roll topping fruitcake. Caramels
+                      | liquorice biscuit ice cream fruitcake cotton candy tart.
+                .card
+                  #headingFour.card-header.collapsed aria-controls="collapseFour" aria-expanded="false" data-target="#collapseFour" data-toggle="collapse" role="button" 
+                    span.collapsed.collapse-title Accordion Item 4
+                  #collapseFour.pt-1.collapse aria-labelledby="headingFour" data-parent="#cardAccordion" style="" 
+                    .card-body
+                      | Sweet pie candy jelly. Sesame snaps biscuit sugar plum. Sweet roll topping fruitcake. Caramels
+                      | liquorice biscuit ice cream fruitcake cotton candy tart.
+
+      .col-xl-4.col-md-6.img-top-card
+        .card.widget-img-top
+          .card-content
+            = image_tag 'girl-image.jpg', class: 'img-fluid img card-img-top mb-1'
+            .heading-elements
+              i.bx.bx-dots-vertical-rounded.font-medium-3.align-middle.text-white
+            .text-center
+              h4 Agnes Horton
+              p Designer
+              p.px-2.pb-1
+                | Jelly beans halvah cake chocolate gummies jelly pudding gingerbread ice
+                | cream. Jelly
+                | candy canes halvah ice cream donut. I love jujubes wafer pie ice cream tiramisu.
+          .card-footer.text-center
+            .d-flex.justify-content-around.mb-1
+              .d-flex.flex-column.align-items-center.content-post
+                span 593
+                small.text-muted Total Post
+              .d-flex.flex-column.align-items-center.content-followers
+                span 456
+                small.text-muted Followers
+              .d-flex.flex-column.align-items-center.content-following
+                span 468
+                small.text-muted Following
+            button.btn.btn-primary.glow.px-4 type="button"  Follow
+
+
