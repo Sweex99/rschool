@@ -9,7 +9,7 @@ group :development do
   gem 'rspec-rails'
   gem 'faker'
   gem 'simplecov'
-  gem 'mina'
+  gem 'mina'  
   gem 'simple_form'
   gem 'dotenv-rails'
   gem 'slim-rails'
