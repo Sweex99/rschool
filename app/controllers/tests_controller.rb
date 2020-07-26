@@ -1,6 +1,3 @@
 class TestsController < ApplicationController
-    def index
-        binding.pry
-        @user = User.first
-    end
+    def index; end
 end
