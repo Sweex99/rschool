@@ -1,7 +1,4 @@
 class Organization < ApplicationRecord
-  has_many :admins
-  has_many :class_rooms
-  has_many :teachers
-  has_many :students
-  
+  has_many :organization_roles
+  has_many :users, through: :organization_roles
 end

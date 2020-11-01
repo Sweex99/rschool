@@ -1,30 +1,446 @@
-h2
-  | Edit 
-  = resource_name.to_s.humanize
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      p
-        | Currently waiting confirmation for: 
-        = resource.unconfirmed_email
-    = f.input :password,
-    -                 hint: "leave it blank if you don't want to change it",
-    -                 required: false,
-    -                 input_html: { autocomplete: "new-password" }
-    = f.input :password_confirmation,
-    -                 required: false,
-    -                 input_html: { autocomplete: "new-password" }
-    = f.input :current_password,
-    -                 hint: "we need your current password to confirm your changes",
-    -                 required: true,
-    -                 input_html: { autocomplete: "current-password" }
-  .form-actions
-    = f.button :submit, "Update"
-h3
-  | Cancel my account
-p
-  | Unhappy? 
-  = link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+section#page-account-settings
+  .row
+    .col-12
+      .row
+        /! left menu section
+        .col-md-3.mb-2.mb-md-0.pills-stacked
+          ul.nav.nav-pills.flex-column
+            li.nav-item
+              a#account-pill-general.nav-link.d-flex.align-items-center.active aria-expanded="true" data-toggle="pill" href="#account-vertical-general" 
+                i.bx.bx-cog
+                span General
+            li.nav-item
+              a#account-pill-password.nav-link.d-flex.align-items-center aria-expanded="false" data-toggle="pill" href="#account-vertical-password" 
+                i.bx.bx-lock
+                span Change Password
+            li.nav-item
+              a#account-pill-info.nav-link.d-flex.align-items-center aria-expanded="false" data-toggle="pill" href="#account-vertical-info" 
+                i.bx.bx-info-circle
+                span Info
+            li.nav-item
+              a#account-pill-social.nav-link.d-flex.align-items-center aria-expanded="false" data-toggle="pill" href="#account-vertical-social" 
+                i.bx.bxl-twitch
+                span Social links
+            li.nav-item
+              a#account-pill-connections.nav-link.d-flex.align-items-center aria-expanded="false" data-toggle="pill" href="#account-vertical-connections" 
+                i.bx.bx-link
+                span Connections
+            li.nav-item
+              a#account-pill-notifications.nav-link.d-flex.align-items-center aria-expanded="false" data-toggle="pill" href="#account-vertical-notifications" 
+                i.bx.bx-bell
+                span Notifications
+        /! right content section
+        .col-md-9
+          .card
+            .card-content
+              .card-body
+                .tab-content
+                  #account-vertical-general.tab-pane.active aria-expanded="true" aria-labelledby="account-pill-general" role="tabpanel" 
+                    .media
+                      a href=("javascript: void(0);") 
+                        = image_tag 'avatar-s-11.jpg', class: 'rounded mr-75', height: '64', width: '64'
+                      .media-body.mt-25
+                        .col-12.px-0.d-flex.flex-sm-row.flex-column.justify-content-start
+                          label.btn.btn-sm.btn-light-primary.ml-50.mb-50.mb-sm-0 for="select-files" 
+                            span Upload new photo
+                            input#select-files hidden="" type="file" /
+                          button.btn.btn-sm.btn-light-secondary.ml-50 Reset
+                        p.text-muted.ml-1.mt-50
+                          small
+                            | Allowed JPG, GIF or PNG. Max
+                            | size of
+                            | 800kB
+                    hr/
+                    form novalidate="" 
+                      .row
+                        .col-12
+                          .form-group.validate
+                            .controls
+                              label Username
+                              input.form-control aria-invalid="false" data-validation-required-message=("This username field is required") placeholder="Username" required="" type="text" value="hermione007" /
+                              .help-block
+                        .col-12
+                          .form-group.validate
+                            .controls
+                              label Name
+                              input.form-control aria-invalid="false" data-validation-required-message=("This name field is required") placeholder="Name" required="" type="text" value=("Hermione Granger") /
+                              .help-block
+                        .col-12
+                          .form-group.validate
+                            .controls
+                              label E-mail
+                              input.form-control aria-invalid="false" data-validation-required-message=("This email field is required") placeholder="Email" required="" type="email" value="granger007@hogward.com" /
+                              .help-block
+                        .col-12
+                          .alert.bg-rgba-warning.alert-dismissible.mb-2 role="alert" 
+                            button.close aria-label="Close" data-dismiss="alert" type="button" 
+                              span aria-hidden="true"  ×
+                            p.mb-0
+                              | Your email is not confirmed. Please check your inbox.
+                            a href=("javascript: void(0);")  Resend confirmation
+                        .col-12
+                          .form-group
+                            label Company
+                            input.form-control placeholder=("Company name") type="text" /
+                        .col-12.d-flex.flex-sm-row.flex-column.justify-content-end
+                          button.btn.btn-primary.glow.mr-sm-1.mb-1 type="submit" 
+                            | Save
+                            | changes
+                          button.btn.btn-light.mb-1 type="reset"  Cancel
+                  #account-vertical-password.tab-pane.fade aria-expanded="false" aria-labelledby="account-pill-password" role="tabpanel" 
+                    form novalidate="" 
+                      .row
+                        .col-12
+                          .form-group
+                            .controls
+                              label Old Password
+                              input.form-control data-validation-required-message=("This old password field is required") placeholder=("Old Password") required="" type="password" /
+                              .help-block
+                        .col-12
+                          .form-group
+                            .controls
+                              label New Password
+                              input.form-control data-validation-required-message=("The password field is required") minlength="6" name="password" placeholder=("New Password") required="" type="password" /
+                              .help-block
+                        .col-12
+                          .form-group
+                            .controls
+                              label Retype new Password
+                              input.form-control data-validation-match-match="password" data-validation-required-message=("The Confirm password field is required") minlength="6" name="con-password" placeholder=("New Password") required="" type="password" /
+                              .help-block
+                        .col-12.d-flex.flex-sm-row.flex-column.justify-content-end
+                          button.btn.btn-primary.glow.mr-sm-1.mb-1 type="submit" 
+                            | Save
+                            | changes
+                          button.btn.btn-light.mb-1 type="reset"  Cancel
+                  #account-vertical-info.tab-pane.fade aria-expanded="false" aria-labelledby="account-pill-info" role="tabpanel" 
+                    form novalidate="" 
+                      .row
+                        .col-12
+                          .form-group
+                            label Bio
+                            textarea#accountTextarea.form-control placeholder=("Your Bio data here...") rows="3" 
+                        .col-12
+                          .form-group
+                            .controls
+                              label Birth date
+                              input#P1720314296.form-control.birthdate-picker.picker__input aria-expanded="false" aria-haspopup="true" aria-owns="P1720314296_root" aria-readonly="false" data-validation-required-message=("This birthdate field is required") placeholder=("Birth date") readonly="readonly" required="" type="text" /
+                              #P1720314296_root.picker aria-hidden="true" 
+                                .picker__holder tabindex="-1" 
+                                  .picker__frame
+                                    .picker__wrap
+                                      .picker__box
+                                        .picker__header
+                                          .picker__month September
+                                          .picker__year 2020
+                                          .picker__nav--prev aria-controls="P1720314296_table" data-nav="-1" role="button" title=("Previous month") 
+                                          .picker__nav--next aria-controls="P1720314296_table" data-nav="1" role="button" title=("Next month") 
+                                        table#P1720314296_table.picker__table aria-controls="P1720314296" aria-readonly="true" role="grid" 
+                                          thead
+                                            tr
+                                              th.picker__weekday scope="col" title="Sunday"  Sun
+                                              th.picker__weekday scope="col" title="Monday"  Mon
+                                              th.picker__weekday scope="col" title="Tuesday"  Tue
+                                              th.picker__weekday scope="col" title="Wednesday"  Wed
+                                              th.picker__weekday scope="col" title="Thursday"  Thu
+                                              th.picker__weekday scope="col" title="Friday"  Fri
+                                              th.picker__weekday scope="col" title="Saturday"  Sat
+                                          tbody
+                                            tr
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="August, 30, 2020" data-pick="1598734800000" role="gridcell"  30
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="August, 31, 2020" data-pick="1598821200000" role="gridcell"  31
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 1, 2020" data-pick="1598907600000" role="gridcell"  1
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 2, 2020" data-pick="1598994000000" role="gridcell"  2
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 3, 2020" data-pick="1599080400000" role="gridcell"  3
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 4, 2020" data-pick="1599166800000" role="gridcell"  4
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 5, 2020" data-pick="1599253200000" role="gridcell"  5
+                                            tr
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 6, 2020" data-pick="1599339600000" role="gridcell"  6
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 7, 2020" data-pick="1599426000000" role="gridcell"  7
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 8, 2020" data-pick="1599512400000" role="gridcell"  8
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 9, 2020" data-pick="1599598800000" role="gridcell"  9
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 10, 2020" data-pick="1599685200000" role="gridcell"  10
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 11, 2020" data-pick="1599771600000" role="gridcell"  11
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 12, 2020" data-pick="1599858000000" role="gridcell"  12
+                                            tr
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus.picker__day--today.picker__day--highlighted aria-activedescendant="true" aria-label="September, 13, 2020" data-pick="1599944400000" role="gridcell"  13
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 14, 2020" data-pick="1600030800000" role="gridcell"  14
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 15, 2020" data-pick="1600117200000" role="gridcell"  15
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 16, 2020" data-pick="1600203600000" role="gridcell"  16
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 17, 2020" data-pick="1600290000000" role="gridcell"  17
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 18, 2020" data-pick="1600376400000" role="gridcell"  18
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 19, 2020" data-pick="1600462800000" role="gridcell"  19
+                                            tr
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 20, 2020" data-pick="1600549200000" role="gridcell"  20
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 21, 2020" data-pick="1600635600000" role="gridcell"  21
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 22, 2020" data-pick="1600722000000" role="gridcell"  22
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 23, 2020" data-pick="1600808400000" role="gridcell"  23
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 24, 2020" data-pick="1600894800000" role="gridcell"  24
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 25, 2020" data-pick="1600981200000" role="gridcell"  25
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 26, 2020" data-pick="1601067600000" role="gridcell"  26
+                                            tr
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 27, 2020" data-pick="1601154000000" role="gridcell"  27
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 28, 2020" data-pick="1601240400000" role="gridcell"  28
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 29, 2020" data-pick="1601326800000" role="gridcell"  29
+                                              td role="presentation" 
+                                                .picker__day.picker__day--infocus aria-label="September, 30, 2020" data-pick="1601413200000" role="gridcell"  30
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 1, 2020" data-pick="1601499600000" role="gridcell"  1
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 2, 2020" data-pick="1601586000000" role="gridcell"  2
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 3, 2020" data-pick="1601672400000" role="gridcell"  3
+                                            tr
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 4, 2020" data-pick="1601758800000" role="gridcell"  4
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 5, 2020" data-pick="1601845200000" role="gridcell"  5
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 6, 2020" data-pick="1601931600000" role="gridcell"  6
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 7, 2020" data-pick="1602018000000" role="gridcell"  7
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 8, 2020" data-pick="1602104400000" role="gridcell"  8
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 9, 2020" data-pick="1602190800000" role="gridcell"  9
+                                              td role="presentation" 
+                                                .picker__day.picker__day--outfocus aria-label="October, 10, 2020" data-pick="1602277200000" role="gridcell"  10
+                                        .picker__footer
+                                          button.picker__button--today aria-controls="P1720314296" data-pick="1599944400000" disabled="disabled" type="button"  Today
+                                          button.picker__button--clear aria-controls="P1720314296" data-clear="1" disabled="disabled" type="button"  Clear
+                                          button.picker__button--close aria-controls="P1720314296" data-close="true" disabled="disabled" type="button"  Close
+                              .help-block
+                        .col-12
+                          .form-group
+                            label Country
+                            select#accountSelect.form-control
+                              option USA
+                              option India
+                              option Canada
+                        .col-12
+                          .form-group
+                            label Languages
+                            select#languageselect2.form-control.select2-hidden-accessible aria-hidden="true" data-select2-id="languageselect2" multiple="multiple" tabindex="-1" 
+                              option data-select2-id="2" selected="selected" value="English"  English
+                              option value="Spanish"  Spanish
+                              option value="French"  French
+                              option value="Russian"  Russian
+                              option value="German"  German
+                              option data-select2-id="3" selected="selected" value="Arabic"  Arabic
+                              option value="Sanskrit"  Sanskrit
+                            span.select2.select2-container.select2-container--default data-select2-id="1" dir="ltr" style=("width: 100%;") 
+                              span.selection
+                                span.select2-selection.select2-selection--multiple aria-expanded="false" aria-haspopup="true" role="combobox" tabindex="-1" 
+                                  ul.select2-selection__rendered
+                                    li.select2-selection__choice data-select2-id="4" title="English" 
+                                      span.select2-selection__choice__remove role="presentation" > ×
+                                      | English
+                                    li.select2-selection__choice data-select2-id="5" title="Arabic" 
+                                      span.select2-selection__choice__remove role="presentation" > ×
+                                      | Arabic
+                                    li.select2-search.select2-search--inline
+                                      input.select2-search__field aria-autocomplete="list" autocapitalize="none" autocomplete="off" autocorrect="off" placeholder="" role="textbox" spellcheck="false" style=("width: 0.75em;") tabindex="0" type="search" /
+                              span.dropdown-wrapper aria-hidden="true" 
+                        .col-12
+                          .form-group
+                            .controls
+                              label Phone
+                              input.form-control data-validation-required-message=("This phone number field is required") placeholder=("Phone number") required="" type="text" value=("(+656) 254 2568") /
+                              .help-block
+                        .col-12
+                          .form-group
+                            label Website
+                            input.form-control placeholder=("Website address") type="text" /
+                        .col-12
+                          .form-group
+                            label Favourite Music
+                            select#musicselect2.form-control.select2-hidden-accessible aria-hidden="true" data-select2-id="musicselect2" multiple="multiple" tabindex="-1" 
+                              option value="Rock"  Rock
+                              option data-select2-id="7" selected="selected" value="Jazz"  Jazz
+                              option value="Disco"  Disco
+                              option value="Pop"  Pop
+                              option value="Techno"  Techno
+                              option data-select2-id="8" selected="selected" value="Folk"  Folk
+                              option value=("Hip hop")  Hip hop
+                            span.select2.select2-container.select2-container--default data-select2-id="6" dir="ltr" style=("width: 100%;") 
+                              span.selection
+                                span.select2-selection.select2-selection--multiple aria-expanded="false" aria-haspopup="true" role="combobox" tabindex="-1" 
+                                  ul.select2-selection__rendered
+                                    li.select2-selection__choice data-select2-id="9" title="Jazz" 
+                                      span.select2-selection__choice__remove role="presentation" > ×
+                                      | Jazz
+                                    li.select2-selection__choice data-select2-id="10" title="Folk" 
+                                      span.select2-selection__choice__remove role="presentation" > ×
+                                      | Folk
+                                    li.select2-search.select2-search--inline
+                                      input.select2-search__field aria-autocomplete="list" autocapitalize="none" autocomplete="off" autocorrect="off" placeholder="" role="textbox" spellcheck="false" style=("width: 0.75em;") tabindex="0" type="search" /
+                              span.dropdown-wrapper aria-hidden="true" 
+                        .col-12
+                          .form-group
+                            label Favourite movies
+                            select#moviesselect2.form-control.select2-hidden-accessible aria-hidden="true" data-select2-id="moviesselect2" multiple="multiple" tabindex="-1" 
+                              option data-select2-id="12" selected="selected" value=("The Dark Knight") 
+                                | The Dark Knight
+                              option data-select2-id="13" selected="selected" value=("Harry Potter")  Harry Potter
+                              option value="Airplane!"  Airplane!
+                              option value=("Perl Harbour")  Perl Harbour
+                              option value=("Spider Man")  Spider Man
+                              option data-select2-id="14" selected="selected" value=("Iron Man")  Iron Man
+                              option value="Avatar"  Avatar
+                            span.select2.select2-container.select2-container--default data-select2-id="11" dir="ltr" style=("width: 100%;") 
+                              span.selection
+                                span.select2-selection.select2-selection--multiple aria-expanded="false" aria-haspopup="true" role="combobox" tabindex="-1" 
+                                  ul.select2-selection__rendered
+                                    li.select2-selection__choice data-select2-id="15" title=("The Dark Knight\r\n                                                            ") 
+                                      span.select2-selection__choice__remove role="presentation" > ×
+                                      | The Dark Knight
+                                    li.select2-selection__choice data-select2-id="16" title=("Harry Potter") 
+                                      span.select2-selection__choice__remove role="presentation" > ×
+                                      | Harry Potter
+                                    li.select2-selection__choice data-select2-id="17" title=("Iron Man") 
+                                      span.select2-selection__choice__remove role="presentation" > ×
+                                      | Iron Man
+                                    li.select2-search.select2-search--inline
+                                      input.select2-search__field aria-autocomplete="list" autocapitalize="none" autocomplete="off" autocorrect="off" placeholder="" role="textbox" spellcheck="false" style=("width: 0.75em;") tabindex="0" type="search" /
+                              span.dropdown-wrapper aria-hidden="true" 
+                        .col-12.d-flex.flex-sm-row.flex-column.justify-content-end
+                          button.btn.btn-primary.glow.mr-sm-1.mb-1 type="submit" 
+                            | Save
+                            | changes
+                          button.btn.btn-light.mb-1 type="reset"  Cancel
+                  #account-vertical-social.tab-pane.fade aria-expanded="false" aria-labelledby="account-pill-social" role="tabpanel" 
+                    form
+                      .row
+                        .col-12
+                          .form-group
+                            label Twitter
+                            input.form-control placeholder=("Add link") type="text" value="https://www.twitter.com" /
+                        .col-12
+                          .form-group
+                            label Facebook
+                            input.form-control placeholder=("Add link") type="text" /
+                        .col-12
+                          .form-group
+                            label Google+
+                            input.form-control placeholder=("Add link") type="text" /
+                        .col-12
+                          .form-group
+                            label LinkedIn
+                            input.form-control placeholder=("Add link") type="text" value="https://www.linkedin.com" /
+                        .col-12
+                          .form-group
+                            label Instagram
+                            input.form-control placeholder=("Add link") type="text" /
+                        .col-12
+                          .form-group
+                            label Quora
+                            input.form-control placeholder=("Add link") type="text" /
+                        .col-12.d-flex.flex-sm-row.flex-column.justify-content-end
+                          button.btn.btn-primary.glow.mr-sm-1.mb-1 type="submit" 
+                            | Save
+                            | changes
+                          button.btn.btn-light.mb-1 type="reset"  Cancel
+                  #account-vertical-connections.tab-pane.fade aria-expanded="false" aria-labelledby="account-pill-connections" role="tabpanel" 
+                    .row
+                      .col-12.my-2
+                        a.btn.btn-info href=("javascript: void(0);") 
+                          | Connect to
+                          strong Twitter
+                      hr/
+                      .col-12.my-2
+                        button.btn.btn-sm.btn-light-secondary.float-right edit
+                        h6 You are connected to facebook.
+                        p Johndoe@gmail.com
+                      hr/
+                      .col-12.my-2
+                        a.btn.btn-danger href=("javascript: void(0);") 
+                          | Connect to
+                          strong Google
+                      hr/
+                      .col-12.my-2
+                        button.btn.btn-sm.btn-light-secondary.float-right edit
+                        h6 You are connected to Instagram.
+                        p Johndoe@gmail.com
+                      .col-12.d-flex.flex-sm-row.flex-column.justify-content-end
+                        button.btn.btn-primary.glow.mr-sm-1.mb-1 type="submit" 
+                          | Save
+                          | changes
+                        button.btn.btn-light.mb-1 type="reset"  Cancel
+                  #account-vertical-notifications.tab-pane.fade aria-expanded="false" aria-labelledby="account-pill-notifications" role="tabpanel" 
+                    .row
+                      h6.m-1 Activity
+                      .col-12.mb-1
+                        .custom-control.custom-switch.custom-control-inline
+                          input#accountSwitch1.custom-control-input checked="checked" type="checkbox" /
+                          label.custom-control-label.mr-1 for="accountSwitch1" 
+                          span.switch-label.w-100
+                            | Email me when someone comments
+                            | onmy
+                            | article
+                      .col-12.mb-1
+                        .custom-control.custom-switch.custom-control-inline
+                          input#accountSwitch2.custom-control-input checked="checked" type="checkbox" /
+                          label.custom-control-label.mr-1 for="accountSwitch2" 
+                          span.switch-label.w-100
+                            | Email me when someone answers on
+                            | my
+                            | form
+                      .col-12.mb-1
+                        .custom-control.custom-switch.custom-control-inline
+                          input#accountSwitch3.custom-control-input type="checkbox" /
+                          label.custom-control-label.mr-1 for="accountSwitch3" 
+                          span.switch-label.w-100
+                            | Email me hen someone follows
+                            | me
+                      h6.m-1 Application
+                      .col-12.mb-1
+                        .custom-control.custom-switch.custom-control-inline
+                          input#accountSwitch4.custom-control-input checked="checked" type="checkbox" /
+                          label.custom-control-label.mr-1 for="accountSwitch4" 
+                          span.switch-label.w-100 News and announcements
+                      .col-12.mb-1
+                        .custom-control.custom-switch.custom-control-inline
+                          input#accountSwitch5.custom-control-input type="checkbox" /
+                          label.custom-control-label.mr-1 for="accountSwitch5" 
+                          span.switch-label.w-100 Weekly product updates
+                      .col-12.mb-1
+                        .custom-control.custom-switch.custom-control-inline
+                          input#accountSwitch6.custom-control-input checked="checked" type="checkbox" /
+                          label.custom-control-label.mr-1 for="accountSwitch6" 
+                          span.switch-label.w-100 Weekly blog digest
+                      .col-12.d-flex.flex-sm-row.flex-column.justify-content-end
+                        button.btn.btn-primary.glow.mr-sm-1.mb-1 type="submit" 
+                          | Save
+                          | changes
+                        button.btn.btn-light.mb-1 type="reset"  Cancel

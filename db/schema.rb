@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_123319) do
+ActiveRecord::Schema.define(version: 2020_10_18_140511) do
 
   create_table "class_rooms", force: :cascade do |t|
     t.string "title"
@@ -28,11 +28,31 @@ ActiveRecord::Schema.define(version: 2020_07_26_123319) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "organization_roles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "organization_id"
+    t.string "role"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_organization_roles_on_organization_id"
+    t.index ["user_id"], name: "index_organization_roles_on_user_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "class_room_id"
+    t.string "role"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["class_room_id"], name: "index_roles_on_class_room_id"
+    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -55,7 +75,6 @@ ActiveRecord::Schema.define(version: 2020_07_26_123319) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "class_room_id"
-    t.string "type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

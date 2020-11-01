@@ -1,0 +1,16 @@
+.col-md-10.col-12
+  .card style=("height: 392.688px;") 
+    .card-header
+      h4.card-title Horizontal Form
+    .card-content
+      .card-body
+        = simple_form_for @organization, url: account_organizations_path do |f|
+          .form.form-horizontal
+            .form-body
+              .row
+                  .col-md-3
+                    label Title
+                  .col-md-8.form-group
+                    = f.text_field :title, class: 'form-control', placeholder: 'Title', id: 'title'
+                  .col-sm-12.d-flex.justify-content-center
+                    = f.submit 'Submit', class: 'btn btn-primary mr-1 mb-1 mt-3'

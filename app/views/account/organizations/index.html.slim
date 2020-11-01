@@ -1,0 +1,26 @@
+#table-latest-customer.col-lg-12.col-md-12
+  .card 
+    .card-header.border-bottom
+      h5.card-title My Organizations
+      .heading-elements.
+        = button_to 'Створити нову', new_account_organization_path, method: :get, class: 'btn btn-outline-success'
+    /! table start
+    .table-responsive
+      table.table.mb-0
+        tbody
+          - @organizations.each do |organization|
+            tr.org-list-hover
+                td
+                  = link_to account_organization_path(organization), style: 'display: block' do
+                    .d-flex.align-items-center
+                      = image_tag 'avatar-s-4.jpg', width:"32", class: 'rounded-circle'
+                      .ml-1
+                        span.text-bold-500x
+                          = organization.title
+                        br/
+                        span.text-muted
+                          = organization.title
+                      i.bx.bx-chevron-right.font-large-1.cursor-pointer.ml-auto
+                
+                  
+

@@ -1,15 +1,53 @@
-h2
-  | Log in
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :email,
-    -                 required: false,
-    -                 autofocus: true,
-    -                 input_html: { autocomplete: "email" }
-    = f.input :password,
-    -                 required: false,
-    -                 input_html: { autocomplete: "current-password" }
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, "Log in"
-= render "devise/shared/links"
+.app-content.content
+  .content-overlay
+  .content-wrapper
+    .content-header.row
+    .content-body
+      /! login page start
+      section#auth-login.row.flexbox-container
+        .col-xl-8.col-11
+          .card.bg-authentication.mb-0
+            .row.m-0
+              /! left section-login
+              .col-md-6.col-12.px-0
+                .card.disable-rounded-right.mb-0.p-2.h-100.d-flex.justify-content-center
+                  .card-header.pb-1
+                    .card-title
+                      h4.text-center.mb-2 Welcome To My School
+                  .card-content
+                    .card-body
+                      .divider
+                        .divider-text.text-uppercase.text-muted
+                          small
+                            | login with 
+                            | email
+                      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+                        .form-group.mb-50
+                          label.text-bold-600 for="exampleInputEmail1"  Email address
+                          = f.email_field :email, required: false, autofocus: true, input_html: { autocomplete: "email" }, class: 'form-control'
+                        .form-group
+                          label.text-bold-600 for="exampleInputPassword1"  Password
+                          = f.password_field :password,required: false, input_html: { autocomplete: "current-password" }, class: 'form-control'
+                        .form-group.d-flex.flex-md-row.flex-column.justify-content-between.align-items-center
+                          .text-left
+                            .checkbox.checkbox-sm
+                              - if devise_mapping.rememberable?
+                                = f.check_box :remember_me, class: 'form-check-input'
+                                = f.label :remember_me, class: 'checkboxsmall'
+                                  small Keep me logged in
+                          .text-right
+                            a.card-link href="auth-forgot-password.html" 
+                              small Forgot Password?
+                        = f.submit "Login", class: 'button btn btn-primary glow w-100 position-relative'
+                          i#icon-arrow.bx.bx-right-arrow-alt
+                      hr/
+                      .text-center
+                        .text-center
+                          small.mr-25 Already have an account?
+                          small
+                            = link_to "Sign In", new_user_registration_path
+              /! right section image
+              .col-md-6.d-md-block.d-none.text-center.align-self-center.p-3
+                .card-content
+                  = image_tag 'login.png', alt: 'branding logo', class: 'img-fluid'
+      /! login page ends
