@@ -5,7 +5,18 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.2.2"
+    "@rails/webpacker": "4.2.2",
+    "bootstrap": "4.3.1",
+    "c3": "^0.7.20",
+    "granim": "^2.0.0",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-w3c-html-validator": "^2.0.1",
+    "jQuery": "^1.7.4",
+    "jquery-bar-rating": "^1.2.2",
+    "rails-ujs": "^5.2.4-4",
+    "sass": "^1.29.0",
+    "through2": "^4.0.2"
   },
   "version": "0.1.0",
   "devDependencies": {

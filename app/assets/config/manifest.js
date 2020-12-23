@@ -1,12 +1,13 @@
 //= link app.js
 //= link app-menu.js
-//= link app-email.js
 //= link components.js
 //= link footer.js
 //= link LivIconsEvo.defaults.js
 //= link LivIconsEvo.min.js
 //= link LivIconsEvo.tools.js
 //= link apexcharts.js
+//= link app-email.css
+//= link class_room.scss
 
 //= link moment.min.js
 //= link daterangepicker.js
@@ -19,8 +20,9 @@
 //= link vertical-menu-light.js
 //= link bootstrap.js
 //= link show_file_name_in_file_field.js
-//= link jqBootstrapValidation.js  
-//= link quill.js
+//= link jqBootstrapValidation.js
+//= link ckeditor/config.js
+//= link app-email.js
 
 //= link authentication.css
 //= link bootstrap.css
@@ -40,7 +42,7 @@
 //= link vendors.min.css
 //= link toastr.css
 //= link form-validation.css
-//= link app-email.css
+//= link ckeditor/ckeditor.css
 
 //= link boxicons.eot
 //= link boxicons.woff
@@ -65,6 +67,11 @@
 //= link arrow-down.png
 //= link fallback/logo/default.png
 //= link github.png
+//= link taras.jpg
+//= link vasya.jpg
+//= link miha.jpg
+//= link lubomir.jpg
+//= link viktor.jpg
 //
 //= link avatar-s-4.jpg
 //= link avatar-s-11.jpg
@@ -72,8 +79,6 @@
 //= link sketch-mac-icon.png
 //= link carousel.jpg
 //= link default-avatar.png
-//= link girl-image.jpg
-//= link finance.jpg
 
 //= link instagram_profile_image.png
 //= link logo-remote-flow.png
@@ -96,7 +101,6 @@
 //= link channel_icons/trophy.svg
 //= link channel_icons/wallet.svg
 //= link fallback/default_channel_icon.svg
-//= link bank.svg
 
 //= link backgrounds/1.jpg
 //= link backgrounds/2.jpg
@@ -105,3 +109,4 @@
 //= link backgrounds/5.jpg
 
 //= link application.css
+//= link application.js

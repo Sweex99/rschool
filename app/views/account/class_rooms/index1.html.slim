@@ -1,0 +1,60 @@
+#table-latest-customer.col-lg-12.col-md-12
+  .card 
+    .card-header.border-bottom
+      h5.card-title My Organizations
+      .heading-elements.
+        = button_to 'Створити нову', new_account_class_room_path, method: :get, class: 'btn btn-outline-success'
+    /! table start
+    .table-responsive
+      table.table.mb-0
+        tbody
+          - @class_rooms.each do |class_room|
+            tr.org-list-hover
+                td
+                  = link_to account_class_room_path(class_room), style: 'display: block' do
+                    .d-flex.align-items-center
+                      = image_tag 'avatar-s-4.jpg', width:"32", class: 'rounded-circle'
+                      .ml-1
+                        span.text-bold-500x
+                          = class_room.title
+                        br/
+                        span.text-muted
+                          = class_room.description
+                      i.bx.bx-chevron-right.font-large-1.cursor-pointer.ml-auto
+                
+                  
+
+section
+  .card
+    .card-header
+      h4.card-title Users
+    .card-content
+      .card-body
+        .table-responsive
+          table.table
+            thead
+              tr
+                th
+                  a.sort_link href="/account/users?q%5Bs%5D=id+asc"  ID
+                th
+                  a.sort_link href="/account/users?q%5Bs%5D%5B%5D=last_name+asc&q%5Bs%5D%5B%5D=first_name+desc"  Full name
+                th
+                  a.sort_link href="/account/users?q%5Bs%5D=email+asc"  Email
+                th
+                  a.sort_link href="/account/users?q%5Bs%5D=role+asc"  Role
+                th
+                  a.sort_link href="/account/users?q%5Bs%5D=last_sign_in_at+asc"  Last Sign In
+                th Edit
+                th Delete
+            tbody
+              tr
+                td 1
+                td
+                  a href="/account/users/1"  Taras Matiiv
+                td swexx99@gmail.com
+                td admin
+                td 7 November 2020
+                td
+                  a href="/account/users/1/edit"  Edit
+                td
+                  a.danger data-confirm=("Are you sure?") data-method="delete" href="/account/users/1" rel="nofollow"  Delete

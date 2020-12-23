@@ -7,6 +7,13 @@
     /! table start
     .table-responsive
       table.table.mb-0
+        thead
+          tr
+            th
+              a.sort_link href="/account/users?q%5Bs%5D%5B%5D=last_name+asc&q%5Bs%5D%5B%5D=first_name+desc"  Full name
+            th
+              a.sort_link href="/account/users?q%5Bs%5D=last_sign_in_at+asc"  Last Sign In
+
         tbody
           - @organizations.each do |organization|
             tr.org-list-hover

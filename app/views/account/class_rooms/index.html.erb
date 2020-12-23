@@ -1,0 +1,54 @@
+<section>
+   <div class="card">
+      <div class="card-header">
+         <h4 class="card-title">Class rooms</h4>
+      </div>
+      <div class='heading-elements'>
+        <%= button_to 'Створити нову', new_account_class_room_path, method: :get, class: 'btn btn-outline-success' %>
+      </div>      
+      
+   </div>
+   <div class="col-xl-12 col-md-12 whether-card">
+      <div class="row">
+        <% @class_rooms.each do |class_room| %>
+         
+          <div class="col-xl-4 col-md-6 col-6 user-profile-card">
+            <%= link_to account_class_room_path(class_room) do %>
+            <div class="card">
+              <div class="card-header mx-auto pt-3">
+                <div class="avatar bg-rgba-primary p-50">
+                  <%= image_tag 'avatar-s-4.jpg', width:"32", class: 'img-fluid', height: '134', width: '134' %>
+                </div>
+              </div>
+              
+              <div class="card-content">
+                <div class="card-body text-center">
+                  <h4><%= class_room.title %></h4>
+                  <p>class_room.author</p>
+                  <!-- <p class="px-1">Jelly beans halvah cake chocolate gummies.</p> -->
+                  <div class="d-flex justify-content-around mb-1">
+                    <div class="card-icons d-flex flex-column">
+                      <i class="bx bx-camera font-medium-5 font-weight-bold"></i>
+                      <p>333</p>
+                    </div>
+                    <div class="card-icons d-flex flex-column">
+                      <i class="bx bx-heart font-medium-5 font-weight-bold"></i>
+                      <p>333</p>
+                    </div>
+                    <div class="card-icons d-flex flex-column">
+                      <i class="bx bx-user font-medium-5 font-weight-bold"></i>
+                      <p>333</p>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary glow px-4">Follow</button>
+                </div>
+              </div>
+              
+            </div>
+            <% end %>
+          </div>
+        
+      <% end %>
+    </div>
+  </div>
+</section>
