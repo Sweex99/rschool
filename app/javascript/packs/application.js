@@ -5,7 +5,6 @@
 
 // Core libraries
 require("turbolinks").start()
-require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
@@ -22,18 +21,16 @@ require("select2")
 require("cleave.js")
 require("waypoints/lib/noframework.waypoints")
 require("waypoints/lib/shortcuts/infinite")
+require("chart.js")
 
 window.iziToast = require("izitoast")
 
 // Stisla
 require("vendors/stisla/stisla")
 require("vendors/stisla/scripts")
-require("packs/page/auth-register")
-require('packs/page/bootstrap-modal')
-require("packs/page/features-posts")
-require("packs/page/features-post-create")
+require('/vendor/page/bootstrap-modal')
 
-require("packs/page/modules-chartjs")
+require("/vendor/page/modules-chartjs")
 
 // Application
 require("app").start()
